@@ -1,0 +1,8 @@
+sqlalchemy>=2.0
+psycopg[binary]>=3.1
+pandas>=2.0
+sshtunnel>=0.4
+paramiko>=3.4,<4   # sshtunnel 0.4 todavía referencia paramiko.DSSKey, eliminado en paramiko 4
+pydantic-settings>=2.0
+python-dotenv>=1.0
+jupyter>=1.0

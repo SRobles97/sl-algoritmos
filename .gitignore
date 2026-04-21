@@ -1,5 +1,21 @@
-.env
-__pycache__/
-*.egg-info/
-.ipynb_checkpoints/
+# Entorno
 .venv/
+.env
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+*.egg-info/
+
+# Jupyter
+.ipynb_checkpoints/
+
+# Archivos de datos/cache
+*.parquet
+*.pkl
+*.csv
+
+# OS
+.DS_Store

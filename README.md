@@ -2,7 +2,7 @@
 
 Entorno local para prototipar análisis. Te conecta a la base de datos de producción (TimescaleDB en el VPS), trae los datos a un notebook de Jupyter como DataFrames de pandas y te permite probar algoritmos en tu máquina antes de pasarlos a producción.
 
-**Estás conectado a la base de datos de producción. Por favor, solo lectura (SELECT).** Cualquier proceso que deba ejecutarse en producción, avísame por Slack junto con la entrega (ver más abajo).
+**Estás conectado a la base de datos de producción. Por favor, solo lectura (SELECT).** Cualquier proceso que deba ejecutarse en producción, avísame junto con la entrega (ver más abajo).
 
 ## Requisitos previos
 

@@ -6,8 +6,9 @@ Entorno local para prototipar análisis. Te conecta a la base de datos de produc
 
 ## Requisitos previos
 
-- Python 3.11 o superior
-- `pip`
+- [Docker Desktop](https://www.docker.com/products/docker-desktop/) instalado y abierto
+- [Visual Studio Code](https://code.visualstudio.com/)
+- La extensión [Dev Containers](https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-containers) de VS Code
 - Un archivo `.env` con las credenciales entregadas por privado. **Nunca lo subas a git.**
 
 ## Instalación
@@ -15,17 +16,19 @@ Entorno local para prototipar análisis. Te conecta a la base de datos de produc
 ```bash
 git clone <url-del-repo> sl-analytics
 cd sl-analytics
-
-python3 -m venv .venv
-source .venv/bin/activate
-
-pip install --upgrade pip
-pip install -r requirements.txt
-pip install -e .
-
 cp .env.example .env
-# completa los valores que te compartí
 ```
+
+Completa los valores de `.env` con las credenciales que te compartí.
+
+Luego abre la carpeta en VS Code:
+
+1. Abre Docker Desktop y espera a que quede corriendo.
+2. En VS Code, abre la carpeta `sl-analytics`.
+3. Cuando VS Code pregunte, elige **Reopen in Container**.
+4. Si no aparece el aviso, abre la paleta de comandos (`Cmd+Shift+P`) y ejecuta **Dev Containers: Reopen in Container**.
+
+Listo. El contenedor instala Python, dependencias y el paquete local automáticamente.
 
 ## Prueba rápida de conexión
 

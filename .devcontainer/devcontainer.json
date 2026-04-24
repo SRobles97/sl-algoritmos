@@ -1,9 +1,6 @@
 {
   "name": "sl-analytics",
-  "build": {
-    "context": "..",
-    "dockerfile": "Dockerfile"
-  },
+  "image": "ghcr.io/srobles97/sl-analytics:latest",
   "workspaceFolder": "/workspaces/sl-analytics",
   "mounts": [
     "source=sl-analytics-venv-shadow,target=/workspaces/sl-analytics/.venv,type=volume"

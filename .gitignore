@@ -18,5 +18,7 @@ __pycache__/
 *.csv
 
 # OS
-.DS_Store
+.DS_Stor
+CLAUDE.md
+.claude/
 .claude/settings.local.json

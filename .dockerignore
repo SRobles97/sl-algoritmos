@@ -1,0 +1,11 @@
+.venv/
+.git/
+__pycache__/
+*.pyc
+*.pyo
+*.egg-info/
+.ipynb_checkpoints/
+*.parquet
+*.pkl
+*.csv
+.DS_Store

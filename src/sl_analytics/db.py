@@ -3,7 +3,7 @@ import threading
 from typing import Any
 
 import pandas as pd
-from sqlalchemy import Engine, create_engine, text
+from sqlalchemy import URL, Engine, create_engine, text
 from sshtunnel import SSHTunnelForwarder
 
 from .config import settings
@@ -14,7 +14,7 @@ _engine: Engine | None = None
 
 
 def get_engine() -> Engine:
-    """Abre el túnel SSH (una sola vez) y devuelve un motor de SQLAlchemy cacheado."""
+    """Abre el túnel SSH una sola vez y devuelve un motor de SQLAlchemy en caché."""
     global _tunnel, _engine
     if _engine is not None:
         return _engine
@@ -36,13 +36,17 @@ def get_engine() -> Engine:
             tunnel.start()
         except Exception as e:
             raise RuntimeError(
-                "No se pudo abrir el túnel SSH — revisá las credenciales SSH y que el VPS sea alcanzable"
+                "No se pudo abrir el túnel SSH. Verifica las credenciales SSH y que el VPS sea accesible"
             ) from e
 
         local_port = tunnel.local_bind_port
-        url = (
-            f"postgresql+psycopg://{settings.POSTGRES_USER}:{settings.POSTGRES_PASSWORD}"
-            f"@127.0.0.1:{local_port}/{settings.POSTGRES_DB}"
+        url = URL.create(
+            "postgresql+psycopg",
+            username=settings.POSTGRES_USER,
+            password=settings.POSTGRES_PASSWORD,
+            host="127.0.0.1",
+            port=local_port,
+            database=settings.POSTGRES_DB,
         )
         engine = create_engine(url, pool_pre_ping=True)
 
@@ -58,7 +62,7 @@ def query(sql: str, params: dict[str, Any] | None = None) -> pd.DataFrame:
 
 
 def close() -> None:
-    """Cierra el motor y detiene el túnel SSH. Es seguro llamarla varias veces."""
+    """Cierra el motor y detiene el túnel SSH. Es seguro llamar a esta función varias veces."""
     global _tunnel, _engine
     with _lock:
         if _engine is not None:

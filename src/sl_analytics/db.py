@@ -31,7 +31,7 @@ def get_engine() -> Engine:
                 remote_bind_address=("localhost", settings.POSTGRES_REMOTE_PORT),
                 local_bind_address=("localhost", 0),
                 allow_agent=False,
-                host_pkey_directories=[],
+                host_pkey_directories=None,
             )
             tunnel.start()
         except Exception as e:
